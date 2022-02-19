@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://LiquidBody.cs" type="Script" id=2]
+
+[node name="LiquidBody" type="Node2D"]
+position = Vector2( 100, 100 )
+script = ExtResource( 2 )
+
+[node name="LiquidPolygon" type="Polygon2D" parent="."]
+color = Color( 0.713726, 0.882353, 0.439216, 0.27451 )
