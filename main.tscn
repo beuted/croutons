@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://assets/soupe-courgettes-basilic.png" type="Texture" id=1]
 [ext_resource path="res://assets/crouton1.png" type="Texture" id=2]
@@ -9,6 +9,9 @@
 [ext_resource path="res://WinZone.cs" type="Script" id=7]
 [ext_resource path="res://Main.cs" type="Script" id=8]
 [ext_resource path="res://Cuillere.cs" type="Script" id=9]
+[ext_resource path="res://assets/IMG_20220220_182732.jpg" type="Texture" id=10]
+[ext_resource path="res://assets/confetti-real.png" type="Texture" id=11]
+[ext_resource path="res://assets/fonts/MatchupPro.ttf" type="DynamicFontData" id=12]
 
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 530.105, 116.188 )
@@ -22,8 +25,84 @@ extents = Vector2( 662, 43 )
 [sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 54.5, 943.5 )
 
+[sub_resource type="CanvasItemMaterial" id=9]
+particles_animation = true
+particles_anim_h_frames = 9
+particles_anim_v_frames = 1
+particles_anim_loop = true
+
+[sub_resource type="ParticlesMaterial" id=8]
+emission_shape = 2
+emission_box_extents = Vector3( 800, 1, 1 )
+flag_disable_z = true
+direction = Vector3( 0, 1, 0 )
+spread = 5.0
+gravity = Vector3( 0, 300, 0 )
+initial_velocity = 200.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+color = Color( 1, 0.180392, 0.180392, 1 )
+anim_speed = 3.0
+anim_offset = 1.0
+anim_offset_random = 1.0
+
+[sub_resource type="ParticlesMaterial" id=10]
+emission_shape = 2
+emission_box_extents = Vector3( 800, 1, 1 )
+flag_disable_z = true
+direction = Vector3( 0, 1, 0 )
+spread = 5.0
+gravity = Vector3( 0, 300, 0 )
+initial_velocity = 200.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+color = Color( 0.337255, 0.580392, 0.321569, 1 )
+anim_speed = 3.0
+anim_offset = 1.0
+anim_offset_random = 1.0
+
+[sub_resource type="ParticlesMaterial" id=11]
+emission_shape = 2
+emission_box_extents = Vector3( 800, 1, 1 )
+flag_disable_z = true
+direction = Vector3( 0, 1, 0 )
+spread = 5.0
+gravity = Vector3( 0, 300, 0 )
+initial_velocity = 200.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+color = Color( 0.909804, 0.760784, 0.309804, 1 )
+anim_speed = 3.0
+anim_offset = 1.0
+anim_offset_random = 1.0
+
+[sub_resource type="ParticlesMaterial" id=12]
+emission_shape = 2
+emission_box_extents = Vector3( 800, 1, 1 )
+flag_disable_z = true
+direction = Vector3( 0, 1, 0 )
+spread = 5.0
+gravity = Vector3( 0, 300, 0 )
+initial_velocity = 200.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+color = Color( 0.309804, 0.670588, 0.909804, 1 )
+anim_speed = 3.0
+anim_offset = 1.0
+anim_offset_random = 1.0
+
+[sub_resource type="DynamicFont" id=13]
+size = 50
+font_data = ExtResource( 12 )
+
 [node name="Main" type="Node2D"]
 script = ExtResource( 8 )
+
+[node name="bg" type="Sprite" parent="."]
+modulate = Color( 0.909804, 0.909804, 0.909804, 1 )
+position = Vector2( 845, 327 )
+scale = Vector2( 0.450556, 0.450556 )
+texture = ExtResource( 10 )
 
 [node name="Soupe-courgettes-basilic" type="Sprite" parent="."]
 position = Vector2( 874, 527 )
@@ -43,8 +122,8 @@ shape = SubResource( 3 )
 polygon = PoolVector2Array( -643.872, -116.188, -663.237, 58.0938, -580.937, 275.945, -440.544, 387.292, -29.0464, 474.432, 421.18, 382.45, 580.938, 256.581, 663.237, 77.4583, 653.555, -116.188 )
 
 [node name="Crouton" type="RigidBody2D" parent="."]
-position = Vector2( 45, 540 )
-mass = 2.0
+position = Vector2( 57, 548 )
+mass = 4.0
 gravity_scale = 12.0
 continuous_cd = 2
 script = ExtResource( 6 )
@@ -63,6 +142,10 @@ position = Vector2( 500, 600 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wall"]
 position = Vector2( 94, 33 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Wall"]
+position = Vector2( 89, -1840 )
 shape = SubResource( 2 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Wall"]
@@ -97,16 +180,83 @@ script = ExtResource( 5 )
 
 [node name="Sprite" type="Sprite" parent="fist"]
 rotation = 1.5708
-scale = Vector2( 0.15, 0.15 )
+scale = Vector2( 0.18, 0.18 )
 texture = ExtResource( 4 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="fist"]
 position = Vector2( -1, 3 )
-polygon = PoolVector2Array( 24, 35, -15, 37, -39, -23, -24, -42, 30, -39, 37, -10 )
+polygon = PoolVector2Array( 26, 41, -16, 41, -46, -28, -27, -50, 36, -45, 47, -11 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
 current = true
 zoom = Vector2( 1.2, 1.2 )
+
+[node name="confettis" type="Node2D" parent="."]
+position = Vector2( 150, 0 )
+scale = Vector2( 0.8, 0.8 )
+
+[node name="Confetti" type="Particles2D" parent="confettis"]
+material = SubResource( 9 )
+position = Vector2( 577, -14 )
+emitting = false
+amount = 100
+lifetime = 2.0
+visibility_rect = Rect2( -800, 0, 1600, 800 )
+process_material = SubResource( 8 )
+texture = ExtResource( 11 )
+
+[node name="Confetti2" type="Particles2D" parent="confettis"]
+material = SubResource( 9 )
+position = Vector2( 577, -14 )
+emitting = false
+amount = 100
+lifetime = 2.0
+visibility_rect = Rect2( -800, 0, 1600, 800 )
+process_material = SubResource( 10 )
+texture = ExtResource( 11 )
+
+[node name="Confetti3" type="Particles2D" parent="confettis"]
+material = SubResource( 9 )
+position = Vector2( 577, -14 )
+emitting = false
+amount = 100
+lifetime = 2.0
+visibility_rect = Rect2( -800, 0, 1600, 800 )
+process_material = SubResource( 11 )
+texture = ExtResource( 11 )
+
+[node name="Confetti4" type="Particles2D" parent="confettis"]
+material = SubResource( 9 )
+position = Vector2( 577, -14 )
+emitting = false
+amount = 100
+lifetime = 2.0
+visibility_rect = Rect2( -800, 0, 1600, 800 )
+process_material = SubResource( 12 )
+texture = ExtResource( 11 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -212.0
+margin_top = -20.5
+margin_right = 212.0
+margin_bottom = 20.5
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 2
+custom_constants/shadow_offset_y = 2
+custom_fonts/font = SubResource( 13 )
+text = "Press space to restart"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [connection signal="body_entered" from="Soupe-courgettes-basilic/WinZone" to="Soupe-courgettes-basilic/WinZone" method="OnBodyEntered"]
